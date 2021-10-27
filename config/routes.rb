@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   resources :characters
-  resources :users
+  resources :users do 
+    resources :characters
+  end
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
