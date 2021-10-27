@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: "Hpollard003")
+Character.create(name: "Zoro", ship: "Thousand Sunny", gold: 0, user_id: 1)

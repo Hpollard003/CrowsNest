@@ -1,7 +1,8 @@
 {
   "name": "phase-4-deploying-app-demo",
   "description": "Build scripts for Heroku",
-  "engines": {},
+  "engines": {
+  },
   "scripts": {
     "build": "npm install --prefix client && npm run build --prefix client",
     "clean": "rm -rf public",
