@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # returns all users
   def index
-    render json: User.all, include: :characters, status: :ok
+    render json: User.all, status: :ok
   end
 
   def create
