@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    head :no_content
+    render json: { message: "You've been logged out."}
   end
 end
