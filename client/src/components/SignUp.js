@@ -1,29 +1,30 @@
 import { useState } from "react";
 
-
 function SignUp({ onLogin }) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  
-    function handleSubmit(e) {
-      e.preventDefault();
-      fetch("/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          password_confirmation: passwordConfirmation,
-        }),
-      })
-        .then((resp) => resp.json())
-        .then(onLogin);
-    }
-  
-    return (
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        password_confirmation: passwordConfirmation,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then(onLogin);
+  }
+
+  return (
+    <div>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
@@ -48,7 +49,8 @@ function SignUp({ onLogin }) {
         />
         <button type="submit">Submit</button>
       </form>
-    );
-  } 
+    </div>
+  );
+}
 
-export default SignUp
+export default SignUp;
