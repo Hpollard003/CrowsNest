@@ -18,6 +18,7 @@ function Login({ loggedIn }) {
       }
     });
   }
+  
 
   return (
     <div>
@@ -27,7 +28,6 @@ function Login({ loggedIn }) {
         <input
           type="text"
           id="username"
-          autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -35,7 +35,6 @@ function Login({ loggedIn }) {
         <input
           type="password"
           id="password"
-          autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
