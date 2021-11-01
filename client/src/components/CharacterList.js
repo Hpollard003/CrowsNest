@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 export const CharacterList = props => {
     return(
         <section>
             <ul>
                 {props.characters.map(c => (
-                    <li key={c.id}>
+                    <li id={c.id} key={Math.random()}>
                         <span>{c.name}</span>
                         <span>{c.ship}</span>
                         <span>{c.skill}</span>

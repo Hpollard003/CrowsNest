@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Logout({ user, setUser }) {
     const handleLogout = () => {
@@ -12,7 +13,7 @@ function Logout({ user, setUser }) {
 
     return (
         <div>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} ><NavLink to="/">Logout</NavLink></button>
         </div>
     )
 

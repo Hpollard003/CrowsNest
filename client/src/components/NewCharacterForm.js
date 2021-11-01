@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState , useEffect } from "react";
 
-const CharacterForm = (props , { user, setUser }) => {
+const CharacterForm = (props) => {
   const [name, setName] = useState("");
   const [ship, setShip] = useState("");
   const [skill, setSkill] = useState("");
   const [position, setPosition] = useState("");
   const [gold, setGold] = useState("");
-  const [user_id, setId] = useState(0);
+  const [user , setUser] = useState(null)
+
+  useEffect(() => {
+    fetch("/me", {
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setUser(user);
+          console.log(user);
+        });
+      }
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +29,7 @@ const CharacterForm = (props , { user, setUser }) => {
         skill: skill,
         position: position,
         gold: gold,
-        user_id: user_id,
+        user_id: user.id
     })
   };
 
@@ -75,16 +88,6 @@ const CharacterForm = (props , { user, setUser }) => {
             value={gold}
             onChange={(e) => {
               setGold(e.target.value);
-            }}
-          />
-        </div>
-        <div className="form-control">
-          <input
-            type="hidden"
-            name="user_id"
-            value={user_id}
-            onChange={(e) => {
-              setId(e.target.value);
             }}
           />
         </div>

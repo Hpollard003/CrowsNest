@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   resources :characters
-  resources :users do 
-    resources :characters
-  end
+  resources :users
+
+  get '/character', to: "characters#show"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

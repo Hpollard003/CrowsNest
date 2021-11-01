@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {NavLink} from 'react-router-dom'
 
 function Login({ loggedIn }) {
   const [username, setUsername] = useState("");
@@ -38,7 +39,7 @@ function Login({ loggedIn }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit"><NavLink to="/">Login</NavLink></button>
       </form>
     </div>
   );
