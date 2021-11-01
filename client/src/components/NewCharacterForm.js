@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function CharacterForm({ user, setUser }) {
+const CharacterForm = (props , { user, setUser }) => {
   const [name, setName] = useState("");
   const [ship, setShip] = useState("");
   const [skill, setSkill] = useState("");
@@ -10,12 +10,14 @@ function CharacterForm({ user, setUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch("/character", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(),
-    }).then((response) => response.json());
+    props.onAddCharacter({
+        name: name,
+        ship: ship,
+        skill: skill,
+        position: position,
+        gold: gold,
+        user_id: user_id,
+    })
   };
 
   return (
