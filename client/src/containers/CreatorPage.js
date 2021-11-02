@@ -6,4 +6,4 @@ export const CreatorPage = () => {
         <Characters/>
     )
 }
-export default CreatorPage
+export default CreatorPage 

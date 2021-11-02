@@ -31,7 +31,7 @@ const CharacterForm = (props) => {
         gold: gold,
         user_id: user.id
     })
-  };
+  }; 
 
   return (
     <div>

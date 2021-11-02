@@ -7,6 +7,6 @@ export const LoginPage = () => {
         <div>
         <Login/>
         <NavLink to='/Signup' >Signup Here</NavLink>
-        </div>
+        </div> 
     )
 }

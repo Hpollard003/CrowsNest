@@ -8,5 +8,5 @@ export const SignupPage = () => {
         <SignUp/>
         <NavLink to='/login' >Already a user login here.</NavLink>
         </div>
-    )
+    ) 
 }

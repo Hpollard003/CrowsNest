@@ -6,12 +6,12 @@ export const Navbar = () => {
     return (
       <div>
         <div className="nav">
-          <NavLink to="/">HOME </NavLink>
-          <NavLink to="/profile">Profile  </NavLink>   
+          <NavLink to="/">Home </NavLink>
+          <NavLink to="/profile">Profile </NavLink>   
           <NavLink to="/creator">Creator</NavLink>
         <Logout/>
         </div> 
       </div>
     );
   };
-export default Navbar;
+export default Navbar; 

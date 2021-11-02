@@ -19,4 +19,4 @@ function Logout({ user, setUser }) {
 
 }
 
-export default Logout
+export default Logout 

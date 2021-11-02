@@ -8,9 +8,9 @@ export const Characters = () => {
     useEffect(() => {
     fetch('/characters').then(resp => resp.json()
     ).then(data => {
-        const characters = []
+        const character = []
         for (const key in data) {
-            characters.push({
+            character.push({
                 id: data[key].id,
                 name: data[key].name,
                 ship: data[key].ship,
@@ -19,9 +19,9 @@ export const Characters = () => {
                 gold: data[key].gold
             })
         }
-        setCharacters(characters)
+        setCharacters(character)
     })
-    }, [])
+    }, [setCharacters])
 
 
 
@@ -33,18 +33,17 @@ export const Characters = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setCharacters( prevCharacters => [...prevCharacters,{ key: data.id , ...character}])
+            setCharacters( prevCharacters => [...prevCharacters,{ id: data.id , ...character}])
             console.log(character)
         });
         
     }
 
-    const removeItem = e => {
-        fetch(`/characters/${e.target.id}`, {
+    const removeItem = event => {
+        fetch(`/characters/${event.target.id}`, {
             method: 'DELETE'
-        }).then(response =>{
-            setCharacters( prevCharacterIDs => prevCharacterIDs.filter((character) => character.id !== characters.id ))
-        })
+        }).then(resp => resp.json()
+        ).then(data => data)
 
         
     }

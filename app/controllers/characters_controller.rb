@@ -23,7 +23,7 @@ class CharactersController < ApplicationController
         if @current_user
             user = @current_user.characters.find_by(id: params[:id])
             user.destroy
-            head :no_content
+            render json:{message: "Deleted character"}
         end
         # @character.destroy
         # head :no_content, status: :ok
