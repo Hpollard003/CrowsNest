@@ -33,9 +33,9 @@ export const Profile = props => {
 
 
   const renderCharacters = () => {
-    return userCharacters.map( char => (
-      <div>
-        <li>
+    return userCharacters.map( (char, ind) => (
+      <div key={ind}>
+        <li >
         {char.name}
         {char.ship}
         </li>
