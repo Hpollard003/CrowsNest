@@ -10,4 +10,6 @@ User.create(username: "Hpollard003", password: "password", password_confirmation
 Character.create(name: "Zoro", ship: "Thousand Sunny", gold: 0, user_id: 1)
 Character.create(name: "Sanji", ship: "Thousand Sunny", gold: 0, user_id: 1)
 Character.create(name: "Luffy", ship: "Thousand Sunny", gold: 0, user_id: 1)
-Character.create(name: "Nico Robin", ship: "Thousand Sunny", gold: 0, user_id: 5)
+Character.create(name: "Nico Robin", ship: "Thousand Sunny", gold: 0, user_id: 2)
+Character.create(name: "Nami", ship: "Thousand Sunny", gold: 0, user_id: 2)
+Character.create(name: "Ussop", ship: "Thousand Sunny", gold: 0, user_id: 2)

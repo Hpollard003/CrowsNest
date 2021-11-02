@@ -6,7 +6,7 @@ import { Home } from './containers/Home'
 import { SignupPage } from './containers/SignupPage';
 import { LoginPage } from './containers/LoginPage';
 import { CreatorPage } from './containers/CreatorPage';
-import { Profile } from './components/Profile';
+import Profile  from './components/Profile';
 
 
 function App() {

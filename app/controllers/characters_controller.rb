@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
     def index
-        render json: Character.all, status: :ok
+        render json: @current_user.characters, status: :ok
     end
 
     def show 
@@ -20,15 +20,19 @@ class CharactersController < ApplicationController
     end
 
     def destroy
-        character = find_character
-        character.destroy!
-        render json: no_content
+        if @current_user
+            user = @current_user.characters.find_by(id: params[:id])
+            user.destroy
+            head :no_content
+        end
+        # @character.destroy
+        # head :no_content, status: :ok
     end
 
     private
 
     def find_character
-        Character.find_by(id: params[:id])
+        @character = Character.find_by(id: params[:id])
     end
 
     def character_params

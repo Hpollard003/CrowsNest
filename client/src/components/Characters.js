@@ -11,7 +11,7 @@ export const Characters = () => {
         const characters = []
         for (const key in data) {
             characters.push({
-                id: key,
+                id: data[key].id,
                 name: data[key].name,
                 ship: data[key].ship,
                 skill: data[key].skill,
@@ -39,8 +39,12 @@ export const Characters = () => {
         
     }
 
-    const removeItem = id => {
-        setCharacters( prevCharacterIDs => prevCharacterIDs.filter((character) => character.id !== id ))
+    const removeItem = e => {
+        fetch(`/characters/${e.target.id}`, {
+            method: 'DELETE'
+        }).then(response =>{
+            setCharacters( prevCharacterIDs => prevCharacterIDs.filter((character) => character.id !== characters.id ))
+        })
 
         
     }
