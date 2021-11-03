@@ -7,10 +7,11 @@ export const CharacterList = (props) => {
       <div className="row ">
         {props.characters.map((c, ind) => (
           <div className="col" >
-            <div className="card w-100 border " key={ind}>
+            <div className="card w-100 border" key={ind}>
               <img
                 src={`${c.img_url}`}
                 className="card-img-top"
+                style={{width: '100%', height: "300px"}}
                 alt={`${c.name} img`}
               />
               <div className="card-body">
