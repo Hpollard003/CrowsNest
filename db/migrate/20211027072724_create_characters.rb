@@ -4,8 +4,9 @@ class CreateCharacters < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :ship
       t.string :skill
-      t.string :position
+      t.string :description
       t.integer :gold
+      t.string :img_url
       t.integer :user_id
 
       t.timestamps

@@ -6,7 +6,6 @@ export const LoginPage = () => {
     return (
         <div>
         <Login/>
-        <NavLink to='/Signup' >Signup Here</NavLink>
         </div> 
     )
 }

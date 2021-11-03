@@ -1,19 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Logout({ user, setUser }) {
+function Logout() {
     const handleLogout = () => {
         fetch("/logout", {method: "DELETE"})
-        .then(resp => {
-            if (resp.ok) {
-                setUser = null
-            }
-        })
+        .then(() => {})
     };
 
     return (
         <div>
-            <button onClick={handleLogout} ><NavLink to="/">Logout</NavLink></button>
+            <button className="btn btn-outline-info rounded-pill" onClick={handleLogout} ><NavLink className="text-decoration-none text-dark" to="/">Logout</NavLink></button>
         </div>
     )
 

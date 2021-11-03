@@ -19,14 +19,16 @@ ActiveRecord::Schema.define(version: 2021_10_27_072724) do
     t.string "name"
     t.string "ship"
     t.string "skill"
-    t.string "position"
+    t.string "description"
     t.integer "gold"
+    t.string "img_url"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "img_url"
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false

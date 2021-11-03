@@ -15,8 +15,9 @@ export const Characters = () => {
                 name: data[key].name,
                 ship: data[key].ship,
                 skill: data[key].skill,
-                position: data[key].position,
-                gold: data[key].gold
+                description: data[key].description,
+                gold: data[key].gold,
+                img_url: data[key].img_url
             })
         }
         setCharacters(character)
@@ -49,11 +50,11 @@ export const Characters = () => {
     }
 
     return(
-        <div>
+        <div className="container">
             <CharacterForm onAddCharacter={addCharacterHandler}/>
 
-            <section>
-                <h2>All Existing Characters</h2>
+            <section >
+                <h2 className="text-center">Characters</h2>
                 <CharacterList characters={characters} removeItem={removeItem}/>
             </section>
         </div>
