@@ -24,11 +24,15 @@ function SignUp({ onLogin }) {
       .then((resp) => resp.json())
       .then(onLogin);
   }
+  function refreshPage(){
+    setTimeout(() => {
+    window.location.reload()}, 500)
+} 
 
   return (
-    <div className="card w-50 position-absolute top-50 start-50 translate-middle">
-      <NavLink className="btn btn-outline-info" to="/">Home</NavLink>
-      <div class="card-header fs-3 text-center">Signup</div>
+    <div className="card w-25 position-absolute top-50 start-50 translate-middle">
+      <NavLink className="btn btn-outline-dark" to="/">Home</NavLink>
+      <div className="card-header fs-3 text-center bg-info">Signup</div>
       <form
         onSubmit={handleSubmit}
         className="list-group list-group-flush"
@@ -64,11 +68,15 @@ function SignUp({ onLogin }) {
           className="list-group-item"
           type="img"
           id="imageUrl"
-          placeholder="Set Img Url Here"
+          placeholder="Img Url here for profile"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-          <button type="submit" className="btn btn-outline-info">Submit</button>
+        <div onClick={refreshPage}>
+          <button className="btn btn-outline-info w-100" type="submit">
+            Sign up
+          </button>
+        </div>
       </form>
       <NavLink to="/login" className="btn btn-outline-info">Already a user login here.</NavLink>
     </div>

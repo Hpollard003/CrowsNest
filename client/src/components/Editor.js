@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-const CharacterForm = (props) => {
+export const Editor = (props) => {
+  const [character, setCharacter] = useState([]);
+  const [charId, setCharId] = useState([]);
   const [name, setName] = useState("");
   const [ship, setShip] = useState("");
   const [skill, setSkill] = useState("");
@@ -22,9 +24,45 @@ const CharacterForm = (props) => {
     });
   }, []);
 
-  const handleSubmit = (e) => {
+  const addCharacterHandler = (character) => {
+    fetch("/characters", {
+      method: "PATCH",
+      body: JSON.stringify(character),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCharacter((prevCharacters) => [
+          ...prevCharacters,
+          { id: data.id, ...character },
+        ]);
+        console.log(character);
+      });
+  };
+
+  useEffect(() => {
+    fetch(`/characters/${charId}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        const character = [];
+        for (const key in data) {
+          character.push({
+            id: data[key].id,
+            name: data[key].name,
+            ship: data[key].ship,
+            skill_level: data[key].skill_level,
+            description: data[key].description,
+            img_url: data[key].img_url,
+          });
+        }
+        setCharacter(character);
+      });
+  }, [charId]);
+
+  const editBtn = (e) => {
+    setCharId(e.target.id);
     e.preventDefault();
-    props.onAddCharacter({
+    addCharacterHandler({
       name: name,
       ship: ship,
       skill_level: skill,
@@ -33,15 +71,21 @@ const CharacterForm = (props) => {
       user_id: user.id,
     });
   };
-
-  const toggleBtn = () => {
+  const toggleBtn = (e) => {
+    setCharId(e.target.id);
     !toggled ? setToggled(true) : setToggled(false);
-  }
+  };
 
   return (
-    <div className="fixed-bottom card w-50" >
-      <button className="btn btn-outline-info" onClick={toggleBtn}>New Character</button>
-      <form onSubmit={handleSubmit} className="list-group list-group-flush" hidden={toggled}>
+    <div className="position-bottom d-inline-flex card w-50">
+      <button className="btn btn-outline-info" onClick={toggleBtn}>
+        Edit
+      </button>
+      <form
+        onSubmit={editBtn}
+        className="list-group list-group-flush"
+        hidden={toggled}
+      >
         <div className="mb-3 list-group-item ">
           <input
             type="text"
@@ -115,4 +159,4 @@ const CharacterForm = (props) => {
     </div>
   );
 };
-export default CharacterForm;
+export default Editor;

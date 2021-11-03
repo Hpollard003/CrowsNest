@@ -18,9 +18,8 @@ ActiveRecord::Schema.define(version: 2021_10_27_072724) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "ship"
-    t.string "skill"
+    t.string "skill_level"
     t.string "description"
-    t.integer "gold"
     t.string "img_url"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

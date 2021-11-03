@@ -1,11 +1,11 @@
 // import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home } from "./containers/Home";
-import { SignupPage } from "./containers/SignupPage";
-import { LoginPage } from "./containers/LoginPage";
+import { AuthHome } from "./containers/AuthHome";
 import { CreatorPage } from "./containers/CreatorPage";
 import Profile from "./components/Profile";
+import Home from "./containers/Home";
+import Editor from "./components/Editor";
 
 const Auth = (props) => {
   return (
@@ -13,11 +13,12 @@ const Auth = (props) => {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/signup" component={SignupPage} />
+          <Route exact path="/" component={AuthHome} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/creator" component={CreatorPage} />
+          <Route exact path="/edit" component={Editor} />
+          <Route exact path='*' component={AuthHome} />
+          <Route exact path="/home" component={Home} />
         </Switch>
       </Router>
     </div>

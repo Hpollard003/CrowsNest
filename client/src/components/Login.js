@@ -23,11 +23,15 @@ function Login() {
       }
     });
   };
+  function refreshPage(){
+    setTimeout(() => {
+    window.location.reload()}, 500)
+} 
 
   return (
-    <div className="card w-50 position-absolute top-50 start-50 translate-middle">
-      <NavLink className="btn btn-outline-info" to="/">Home</NavLink>
-      <div class="card-header fs-3 text-center">Login</div>
+    <div className="card w-25 position-absolute top-50 start-50 translate-middle">
+      <NavLink className="btn btn-outline-dark " to="/">Home</NavLink>
+      <div className="card-header fs-3 text-center bg-info">Login</div>
       <form
         onSubmit={handleSubmit}
         className="list-group list-group-flush"
@@ -49,9 +53,14 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="btn btn-outline-info" type="submit">
-          Login
-        </button>
+        
+        <div onClick={refreshPage}>
+          <button className="btn btn-outline-info w-100" type="submit">
+            Login
+          </button>
+        </div>
+
+        
       </form>
       <NavLink className="btn btn-outline-info" to="/Signup">
         Signup Here

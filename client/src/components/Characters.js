@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { CharacterList } from './CharacterList'
+import Editor from './Editor'
 import CharacterForm from './NewCharacterForm'
 
 export const Characters = () => {
     const [ characters , setCharacters ] = useState([])
+    const [toggled, setToggled] = useState(true);
 
     useEffect(() => {
     fetch('/characters').then(resp => resp.json()
@@ -14,9 +16,8 @@ export const Characters = () => {
                 id: data[key].id,
                 name: data[key].name,
                 ship: data[key].ship,
-                skill: data[key].skill,
+                skill_level: data[key].skill_level,
                 description: data[key].description,
-                gold: data[key].gold,
                 img_url: data[key].img_url
             })
         }
@@ -48,14 +49,29 @@ export const Characters = () => {
 
         
     }
+    const editCharacterHandler = character => {
+        !toggled ? setToggled(true) : setToggled(false);
+        fetch("/characters", {
+            method: 'PATCH',
+            body: JSON.stringify(character),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            setCharacters( prevCharacters => [...prevCharacters,{ id: data.id , ...character}])
+            console.log(character)
+        });
+        
+    }
 
     return(
-        <div className="container">
+        <div className="p-5">
             <CharacterForm onAddCharacter={addCharacterHandler}/>
+            <Editor onAddCharacter={addCharacterHandler}/>
 
-            <section >
+            <section className="container">
                 <h2 className="text-center">Characters</h2>
-                <CharacterList characters={characters} removeItem={removeItem}/>
+                <CharacterList characters={characters} removeItem={removeItem} editCharacter={editCharacterHandler}/>
             </section>
         </div>
     )
