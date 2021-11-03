@@ -26,7 +26,7 @@ function SignUp({ onLogin }) {
   }
   function refreshPage(){
     setTimeout(() => {
-    window.location.reload()}, 500)
+    window.location.reload()}, 1000)
 } 
 
   return (
