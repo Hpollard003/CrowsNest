@@ -20,17 +20,17 @@ export const Profile = (props) => {
       <div>
         <img
           src={`${user.img_url}`}
-          className="rounded-circle w-50 border border-info border-end-0 border-5"
+          className="shadow-lg rounded-circle w-50 border border-info border-end-0 border-5"
           alt={`${user.username} pic`}
         />
-        <h2 className="fs-1 text-info fst-italic d-inline-flex p-2 text-gradient border-start border-dark border-bottom rounded-pill border-5">{user.username}</h2>
+        <h2 className="shadow fs-1 text-info fst-italic d-inline-flex p-2 text-gradient border-start border-dark border-bottom rounded-pill border-5">{user.username}</h2>
       </div>
     );
   };
 
   return (
     <div className="text-center position-absolute top-50 start-50 translate-middle mw-100">
-      <h2 className="fst-italic fs-1 border-info border-bottom border-5 rounded-circle m-5 p-3">Profile</h2>
+      <h2 className="shadow fst-italic fs-1 border-info border-bottom border-5 rounded-circle m-5 p-3">Profile</h2>
       {renderProfile()}
     </div>
   );

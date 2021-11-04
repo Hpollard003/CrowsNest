@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import Editor from "./Editor";
 
 export const CharacterList = (props) => {
+    const [charId, setCharId] = useState([]);
+
   const renderCharacterList = () => {
     return (
       <div className="row ">
@@ -55,7 +58,10 @@ export const CharacterList = (props) => {
                   href="/creator"
                   id={c.id}
                   className="btn btn-outline-primary border-top-0 border-end-0"
-                  onClick={props.toggleBtn}
+                  onClick={e => {
+                    setCharId(e.target.id)
+                    console.log(charId)
+                    }}
                 >
                   Edit
                 </button>
@@ -70,6 +76,7 @@ export const CharacterList = (props) => {
   return (
     <section>
       <ul>{renderCharacterList()}</ul>
+      <Editor charId={charId}/>
     </section>
   );
 };

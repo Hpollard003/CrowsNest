@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
+
 export const Editor = (props) => {
   const [character, setCharacter] = useState([]);
-  const [charId, setCharId] = useState([]);
+//   const [charId, setCharId] = useState([]);
   const [name, setName] = useState("");
   const [ship, setShip] = useState("");
   const [skill, setSkill] = useState("");
@@ -25,7 +26,7 @@ export const Editor = (props) => {
   }, []);
 
   const addCharacterHandler = (character) => {
-    fetch(`/characters/${charId}`, {
+    fetch(`/characters/${props.charId}`, {
       method: "PATCH",
       body: JSON.stringify(character),
       headers: { "Content-Type": "application/json" },
@@ -41,7 +42,7 @@ export const Editor = (props) => {
   };
 
   useEffect(() => {
-    fetch(`/characters/${charId}`)
+    fetch(`/characters`)
       .then((resp) => resp.json())
       .then((data) => {
         const character = [];
@@ -57,10 +58,10 @@ export const Editor = (props) => {
         }
         setCharacter(character);
       });
-  }, [charId]);
+  }, []);
 
   const editBtn = (e) => {
-    setCharId(e.target.id);
+    // setCharId(e.target.id);
     e.preventDefault();
     addCharacterHandler({
       name: name,
@@ -72,7 +73,6 @@ export const Editor = (props) => {
     });
   };
   const toggleBtn = (e) => {
-    setCharId(e.target.id);
     !toggled ? setToggled(true) : setToggled(false);
   };
 

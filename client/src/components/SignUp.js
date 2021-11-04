@@ -30,7 +30,7 @@ function SignUp({ onLogin }) {
 } 
 
   return (
-    <div className="card w-25 position-absolute top-50 start-50 translate-middle">
+    <div className="card shadow-lg w-25 position-absolute top-50 start-50 translate-middle">
       <NavLink className="btn btn-outline-dark" to="/">Home</NavLink>
       <div className="card-header fs-3 text-center bg-info">Signup</div>
       <form

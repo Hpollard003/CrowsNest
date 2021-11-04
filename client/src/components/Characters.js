@@ -49,22 +49,7 @@ export const Characters = () => {
       .then((resp) => resp.json())
       .then((data) => data);
   };
-  const editCharacterHandler = (character) => {
-    !toggled ? setToggled(true) : setToggled(false);
-    fetch("/characters", {
-      method: "PATCH",
-      body: JSON.stringify(character),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setCharacters((prevCharacters) => [
-          ...prevCharacters,
-          { id: data.id, ...character },
-        ]);
-        console.log(character);
-      });
-  };
+
 
   return (
     <div className="p-5 text-center">
@@ -80,7 +65,6 @@ export const Characters = () => {
         <CharacterList 
           characters={characters}
           removeItem={removeItem}
-          editCharacter={editCharacterHandler}
         />
       </section>
     </div>

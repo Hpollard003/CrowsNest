@@ -11,7 +11,7 @@ function Logout() {
         href="/home"
       >
       
-        <button className="btn btn-outline-danger border-top-0 border-bottom-0 border-danger border-2 mx-2 fw-bold" onClick={handleLogout}>
+        <button className="shadow-lg btn btn-outline-danger border-top-0 border-bottom-0 border-danger border-2 mx-2 fw-bold" onClick={handleLogout}>
           Logout
         </button>
       </a>
