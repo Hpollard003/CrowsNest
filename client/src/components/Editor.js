@@ -25,7 +25,7 @@ export const Editor = (props) => {
   }, []);
 
   const addCharacterHandler = (character) => {
-    fetch("/characters", {
+    fetch(`/characters/${charId}`, {
       method: "PATCH",
       body: JSON.stringify(character),
       headers: { "Content-Type": "application/json" },
@@ -77,7 +77,7 @@ export const Editor = (props) => {
   };
 
   return (
-    <div className="position-bottom d-inline-flex card w-50">
+    <div className="fixed-bottom card w-50 editForm">
       <button className="btn btn-outline-info" onClick={toggleBtn}>
         Edit
       </button>

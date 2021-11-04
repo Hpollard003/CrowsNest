@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Auth from "./AuthenticatedApp";
 import UnAuth from "./UnauthenticatedApp";
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 

@@ -39,7 +39,7 @@ const CharacterForm = (props) => {
   }
 
   return (
-    <div className="fixed-bottom card w-50" >
+    <div className="charForm fixed-bottom card w-50" >
       <button className="btn btn-outline-info" onClick={toggleBtn}>New Character</button>
       <form onSubmit={handleSubmit} className="list-group list-group-flush" hidden={toggled}>
         <div className="mb-3 list-group-item ">
@@ -103,7 +103,7 @@ const CharacterForm = (props) => {
             placeholder="Enter Image Url"
             value={image}
             onChange={(e) => {
-              setImage(e.target.value);
+              setImage(e.target.value)
             }}
           />
         </div>
