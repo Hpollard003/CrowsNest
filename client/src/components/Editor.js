@@ -5,7 +5,6 @@ export const Editor = (props) => {
   const [character, setCharacter] = useState([]);
 //   const [charId, setCharId] = useState([]);
   const [name, setName] = useState("");
-  const [ship, setShip] = useState("");
   const [skill, setSkill] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -50,8 +49,7 @@ export const Editor = (props) => {
           character.push({
             id: data[key].id,
             name: data[key].name,
-            ship: data[key].ship,
-            skill_level: data[key].skill_level,
+            skill: data[key].skill,
             description: data[key].description,
             img_url: data[key].img_url,
           });
@@ -65,8 +63,7 @@ export const Editor = (props) => {
     e.preventDefault();
     addCharacterHandler({
       name: name,
-      ship: ship,
-      skill_level: skill,
+      skill: skill,
       description: description,
       img_url: image,
       user_id: user.id,
@@ -103,22 +100,9 @@ export const Editor = (props) => {
           <input
             type="text"
             className="form-control"
-            name="ship"
-            id="ship"
-            placeholder="Ship"
-            value={ship}
-            onChange={(e) => {
-              setShip(e.target.value);
-            }}
-          />
-        </div>
-        <div className="mb-3 list-group-item">
-          <input
-            type="text"
-            className="form-control"
             name="skill"
             id="skill"
-            placeholder="Skill"
+            placeholder="Skills"
             value={skill}
             onChange={(e) => {
               setSkill(e.target.value);

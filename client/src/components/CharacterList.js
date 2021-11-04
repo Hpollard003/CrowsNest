@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Editor from "./Editor";
 
 export const CharacterList = (props) => {
-    const [charId, setCharId] = useState([]);
+    const [charId, setCharId] = useState(null);
 
   const renderCharacterList = () => {
     return (
       <div className="row ">
         {props.characters.map((c, ind) => (
-          <div className="col-4 p-2">
-            <div className="card w-100 border-0 bg-transparent " key={ind}>
+          <div className="col-4 p-2" key={Math.random()}>
+            <div className="card w-100 border-0 bg-transparent " >
               <img
                 src={`${c.img_url}` ? `${c.img_url}` : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoozNluLPGOP6A6GSiY06K9ASv2JYVzzgLgLN_JijNAbQVaADKMzqzCwLY2gX4FhSBkH4&usqp=CAU"}
                 className="card-img-top border-info border-5 border-top border-bottom rounded-circle "
@@ -28,21 +28,12 @@ export const CharacterList = (props) => {
                   {c.description}
                 </p>
               </div>
-              <ul className="list-group-flush list-group" key={ind}>
-                <li
-                  className="list-group-item border-0 bg-transparent"
-                  key={ind}
-                >
+              <ul className="list-group-flush list-group" >
+                <li className="list-group-item bg-transparent" >
                   <label className="fw-bold rounded p-1 m-2 border-end border-bottom border-info border-2">
-                    Ship
+                    Skills
                   </label>{" "}
-                  <br></br> {c.ship}
-                </li>
-                <li className="list-group-item bg-transparent" key={ind}>
-                  <label className="fw-bold rounded p-1 m-2 border-end border-bottom border-info border-2">
-                    Skill
-                  </label>{" "}
-                  <br></br> {c.skill_level}
+                  <br></br> {c.skill}
                 </li>
               </ul>
               <div className="card-body">

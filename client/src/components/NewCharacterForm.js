@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const CharacterForm = (props) => {
   const [name, setName] = useState("");
-  const [ship, setShip] = useState("");
   const [skill, setSkill] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -26,8 +25,7 @@ const CharacterForm = (props) => {
     e.preventDefault();
     props.onAddCharacter({
       name: name,
-      ship: ship,
-      skill_level: skill,
+      skill: skill,
       description: description,
       img_url: image,
       user_id: user.id,
@@ -59,22 +57,9 @@ const CharacterForm = (props) => {
           <input
             type="text"
             className="form-control"
-            name="ship"
-            id="ship"
-            placeholder="Ship"
-            value={ship}
-            onChange={(e) => {
-              setShip(e.target.value);
-            }}
-          />
-        </div>
-        <div className="mb-3 list-group-item">
-          <input
-            type="text"
-            className="form-control"
             name="skill"
             id="skill"
-            placeholder="Skill"
+            placeholder="Skills"
             value={skill}
             onChange={(e) => {
               setSkill(e.target.value);

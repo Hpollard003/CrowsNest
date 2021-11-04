@@ -5,7 +5,7 @@ import CharacterForm from "./NewCharacterForm";
 
 export const Characters = () => {
   const [characters, setCharacters] = useState([]);
-  const [toggled, setToggled] = useState(true);
+
 
   useEffect(() => {
     fetch("/characters")
@@ -16,8 +16,7 @@ export const Characters = () => {
           character.push({
             id: data[key].id,
             name: data[key].name,
-            ship: data[key].ship,
-            skill_level: data[key].skill_level,
+            skill: data[key].skill,
             description: data[key].description,
             img_url: data[key].img_url,
           });

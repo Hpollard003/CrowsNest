@@ -36,6 +36,6 @@ class CharactersController < ApplicationController
     end
 
     def character_params
-        params.permit(:name, :ship, :skill_level, :description, :img_url, :user_id)
+        params.permit(:name, :skill, :description, :img_url, :user_id)
     end
 end
