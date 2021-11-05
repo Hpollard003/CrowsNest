@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Auth from "./AuthenticatedApp";
 import UnAuth from "./UnauthenticatedApp";
 
-
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -19,7 +18,15 @@ function App() {
     });
   }, []);
 
-  return <Router>{currentUser ? <Auth /> : <UnAuth />}</Router>;
+  return (
+    <Router>
+      {currentUser ? (
+        <Auth setCurrentUser={setCurrentUser} currentUser={currentUser} />
+      ) : (
+        <UnAuth setCurrentUser={setCurrentUser} />
+      )}
+    </Router>
+  );
 }
 
 export default App;

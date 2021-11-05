@@ -6,7 +6,6 @@ import CharacterForm from "./NewCharacterForm";
 export const Characters = () => {
   const [characters, setCharacters] = useState([]);
 
-
   useEffect(() => {
     fetch("/characters")
       .then((resp) => resp.json())
@@ -49,22 +48,17 @@ export const Characters = () => {
       .then((data) => data);
   };
 
-
   return (
     <div className="p-5 text-center">
-
-<div className="charForm" >
+      <div className="charForm">
         <CharacterForm onAddCharacter={addCharacterHandler} />
-</div>
-<div className="editForm">
+      </div>
+      <div className="editForm">
         <Editor className="editor-btn" onAddCharacter={addCharacterHandler} />
-</div>
+      </div>
       <section className="container">
         <h2 className="text-center">Characters</h2>
-        <CharacterList 
-          characters={characters}
-          removeItem={removeItem}
-        />
+        <CharacterList characters={characters} removeItem={removeItem} />
       </section>
     </div>
   );

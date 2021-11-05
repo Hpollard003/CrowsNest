@@ -16,6 +16,14 @@ code {
   margin-left: 50%;
 }
 
+.charForm-arrow {
+  margin-left: 50%;
+}
+
 .editForm {
   margin-right: 50%;
+}
+
+.btn-lime {
+  color: #00ff15;
 }

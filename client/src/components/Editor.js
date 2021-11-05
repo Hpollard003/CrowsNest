@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 
 
 export const Editor = (props) => {
-  const [character, setCharacter] = useState([]);
-//   const [charId, setCharId] = useState([]);
   const [name, setName] = useState("");
   const [skill, setSkill] = useState("");
   const [description, setDescription] = useState("");
@@ -32,34 +30,11 @@ export const Editor = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setCharacter((prevCharacters) => [
-          ...prevCharacters,
-          { id: data.id, ...character },
-        ]);
         console.log(character);
       });
   };
 
-  useEffect(() => {
-    fetch(`/characters`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        const character = [];
-        for (const key in data) {
-          character.push({
-            id: data[key].id,
-            name: data[key].name,
-            skill: data[key].skill,
-            description: data[key].description,
-            img_url: data[key].img_url,
-          });
-        }
-        setCharacter(character);
-      });
-  }, []);
-
   const editBtn = (e) => {
-    // setCharId(e.target.id);
     e.preventDefault();
     addCharacterHandler({
       name: name,
@@ -74,16 +49,19 @@ export const Editor = (props) => {
   };
 
   return (
-    <div className="fixed-bottom card w-50 editForm">
+    <div>
+    <i className="fas fa-chevron-down fs-3 editForm fixed-bottom p-5 text-info"></i>
+    <i className="fas fa-chevron-down fs-1 editForm fixed-bottom p-5"></i>
+    <div className="fixed-bottom card w-50 editForm bg-dark">
       <button className="btn btn-outline-info" onClick={toggleBtn}>
-        Edit
+        2x Click Edit button to edit
       </button>
       <form
         onSubmit={editBtn}
         className="list-group list-group-flush"
         hidden={toggled}
       >
-        <div className="mb-3 list-group-item ">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -96,7 +74,7 @@ export const Editor = (props) => {
             }}
           />
         </div>
-        <div className="mb-3 list-group-item">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -109,7 +87,7 @@ export const Editor = (props) => {
             }}
           />
         </div>
-        <div className="mb-3 list-group-item">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -122,7 +100,7 @@ export const Editor = (props) => {
             }}
           />
         </div>
-        <div className="mb-3 list-group-item">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -136,10 +114,11 @@ export const Editor = (props) => {
           />
         </div>
 
-        <button className="btn btn-success" type="submit">
+        <button className="btn btn-info" type="submit">
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 };

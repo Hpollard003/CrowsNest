@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
-function SignUp({ onLogin }) {
+function SignUp({ setCurrentUser }) {
+  const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -20,14 +21,17 @@ function SignUp({ onLogin }) {
         passwordConfirmation,
         img_url: image,
       }),
-    })
-      .then((resp) => resp.json())
-      .then(onLogin);
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => {
+          setCurrentUser(user);
+          history.push('/')
+        });
+      } else {
+        r.json().then((err) => err.error);
+      }
+    });
   }
-  function refreshPage(){
-    setTimeout(() => {
-    window.location.reload()}, 1000)
-} 
 
   return (
     <div className="card shadow-lg w-25 position-absolute top-50 start-50 translate-middle">
@@ -51,7 +55,7 @@ function SignUp({ onLogin }) {
           className="list-group-item"
           type="password"
           id="password"
-          autoComplete="on"
+          autoComplete="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -60,6 +64,7 @@ function SignUp({ onLogin }) {
           className="list-group-item"
           type="password"
           id="password_confirmation"
+          autoComplete="password"
           placeholder="One more time"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -68,17 +73,15 @@ function SignUp({ onLogin }) {
           className="list-group-item"
           type="img"
           id="imageUrl"
-          placeholder="Img Url here for profile"
+          placeholder="Set Img Url for profile picture"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-        <div onClick={refreshPage}>
           <button className="btn btn-outline-info w-100" type="submit">
             Sign up
           </button>
-        </div>
       </form>
-      <NavLink to="/login" className="btn btn-outline-info">Already a user login here.</NavLink>
+      <NavLink to="/login" className="btn btn-outline-info">Already a user? Login here.</NavLink>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export const CharacterList = (props) => {
 
   const renderCharacterList = () => {
     return (
-      <div className="row ">
+      <div className="row">
         {props.characters.map((c, ind) => (
           <div className="col-4 p-2" key={Math.random()}>
             <div className="card w-100 border-0 bg-transparent " >

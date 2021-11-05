@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
-function Login() {
+function Login({setCurrentUser}) {
+  const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,17 +17,14 @@ function Login() {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          console.log(user);
+          setCurrentUser(user);
+          history.push('/')
         });
       } else {
         r.json().then((err) => err.error);
       }
     });
   };
-  function refreshPage(){
-    setTimeout(() => {
-    window.location.reload()}, 1000)
-} 
 
   return (
     <div className="card shadow-lg w-25 position-absolute top-50 start-50 translate-middle">
@@ -49,21 +47,17 @@ function Login() {
           className="list-group-item"
           type="password"
           id="password"
+          autoComplete="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        
-        <div onClick={refreshPage}>
           <button className="btn btn-outline-info w-100" type="submit">
             Login
           </button>
-        </div>
-
-        
       </form>
       <NavLink className="btn btn-outline-info" to="/Signup">
-        Signup Here
+        Click Here to create an account
       </NavLink>
     </div>
   );

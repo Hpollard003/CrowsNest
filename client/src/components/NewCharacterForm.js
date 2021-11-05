@@ -37,10 +37,13 @@ const CharacterForm = (props) => {
   }
 
   return (
-    <div className="charForm fixed-bottom card w-50" >
+    <div>
+    <i className="fas fa-chevron-down fs-3 charForm fixed-bottom p-5 text-info"></i>
+    <i className="fas fa-chevron-down fs-1 charForm fixed-bottom p-5"></i>
+    <div className="charForm fixed-bottom card w-50 bg-dark" >
       <button className="btn btn-outline-info" onClick={toggleBtn}>New Character</button>
       <form onSubmit={handleSubmit} className="list-group list-group-flush" hidden={toggled}>
-        <div className="mb-3 list-group-item ">
+        <div className="mb-3 list-group-item  bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -53,7 +56,7 @@ const CharacterForm = (props) => {
             }}
           />
         </div>
-        <div className="mb-3 list-group-item">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -66,7 +69,7 @@ const CharacterForm = (props) => {
             }}
           />
         </div>
-        <div className="mb-3 list-group-item">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -79,7 +82,7 @@ const CharacterForm = (props) => {
             }}
           />
         </div>
-        <div className="mb-3 list-group-item">
+        <div className="mb-3 list-group-item bg-transparent">
           <input
             type="text"
             className="form-control"
@@ -93,10 +96,11 @@ const CharacterForm = (props) => {
           />
         </div>
 
-        <button className="btn btn-success" type="submit">
+        <button className="btn btn-info" type="submit">
           Submit
         </button>
       </form>
+    </div>
     </div>
   );
 };
