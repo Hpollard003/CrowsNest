@@ -3,6 +3,11 @@ import Editor from "./Editor";
 
 export const CharacterList = (props) => {
     const [charId, setCharId] = useState(null);
+    const [toggled, setToggled] = useState(false);
+
+    const toggleBtn = (e) => {
+      setToggled(true)
+    };
 
   const renderCharacterList = () => {
     return (
@@ -37,6 +42,17 @@ export const CharacterList = (props) => {
                 </li>
               </ul>
               <div className="card-body">
+                <button
+                  id={c.id}
+                  className="btn btn-outline-primary border-top-0 border-end-0"
+                  onClick={e => {
+                    console.log(charId)
+                    setCharId(e.target.id)
+                    toggleBtn()
+                    }}
+                >
+                  Edit
+                </button>
                 <a
                   href="/creator"
                   id={c.id}
@@ -45,17 +61,6 @@ export const CharacterList = (props) => {
                 >
                   Remove
                 </a>
-                <button
-                  href="/creator"
-                  id={c.id}
-                  className="btn btn-outline-primary border-top-0 border-end-0"
-                  onClick={e => {
-                    setCharId(e.target.id)
-                    console.log(charId)
-                    }}
-                >
-                  Edit
-                </button>
               </div>
             </div>
           </div>
@@ -67,7 +72,7 @@ export const CharacterList = (props) => {
   return (
     <section>
       <ul>{renderCharacterList()}</ul>
-      <Editor charId={charId}/>
+      <Editor charId={charId} setCharacters={props.setCharacters} toggleBtn={toggleBtn} toggle={toggled} setToggled={setToggled} characters={props.characters}/>
     </section>
   );
 };

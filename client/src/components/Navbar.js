@@ -2,7 +2,7 @@ import React from "react";
 import Logout from "./Logout";
 import crow from '../containers/crowsnestlogo.png'
 
-export const Navbar = () => {
+export const Navbar = ({setCurrentUser}) => {
   return (
     <div className="nav m-4 hstack gap-5 ">
       <a href="/" className="text-decoration-none fw-bold text-info "><img src={crow} className="shadow-lg rounded-pill border border-dark border-2" style={{ width: "6rem" }} alt="logo" href="/" /> BETA</a>
@@ -23,7 +23,7 @@ export const Navbar = () => {
             Create Character
           </a>
         </li>
-        <Logout />
+        <Logout setCurrentUser={setCurrentUser}/>
       </ul>
     </div>
   );

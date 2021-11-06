@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 
-export const Editor = (props) => {
+export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}) => {
   const [name, setName] = useState("");
   const [skill, setSkill] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [toggled, setToggled] = useState(true);
+  // const [toggled, setToggled] = useState(true);
   const [user, setUser] = useState(null);
+
+
 
   useEffect(() => {
     fetch("/me", {
@@ -22,30 +24,34 @@ export const Editor = (props) => {
     });
   }, []);
 
-  const addCharacterHandler = (character) => {
-    fetch(`/characters/${props.charId}`, {
+  const editCharacterHandler = (character) => {
+    fetch(`/characters/${charId}`, {
       method: "PATCH",
       body: JSON.stringify(character),
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => response.json())
       .then((data) => {
+        setCharacters((prevCharacters) => [
+          ...prevCharacters, character 
+        ]);
         console.log(character);
       });
-  };
+  }
 
   const editBtn = (e) => {
     e.preventDefault();
-    addCharacterHandler({
+    editCharacterHandler({
       name: name,
       skill: skill,
       description: description,
       img_url: image,
       user_id: user.id,
-    });
+    })
   };
-  const toggleBtn = (e) => {
-    !toggled ? setToggled(true) : setToggled(false);
+
+  const toggled = (e) => {
+    toggled ? setToggled(false) : setToggled(true);
   };
 
   return (
@@ -53,13 +59,13 @@ export const Editor = (props) => {
     <i className="fas fa-chevron-down fs-3 editForm fixed-bottom p-5 text-info"></i>
     <i className="fas fa-chevron-down fs-1 editForm fixed-bottom p-5"></i>
     <div className="fixed-bottom card w-50 editForm bg-dark">
-      <button className="btn btn-outline-info" onClick={toggleBtn}>
+      <button className="btn btn-outline-info" onClick={toggled}>
         2x Click Edit button to edit
       </button>
       <form
         onSubmit={editBtn}
         className="list-group list-group-flush"
-        hidden={toggled}
+        hidden={!toggle}
       >
         <div className="mb-3 list-group-item bg-transparent">
           <input
@@ -113,8 +119,8 @@ export const Editor = (props) => {
             }}
           />
         </div>
-
-        <button className="btn btn-info" type="submit">
+        
+        <button className="btn btn-info" type="submit" >
           Submit
         </button>
       </form>

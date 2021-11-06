@@ -3,7 +3,7 @@ import { CharacterList } from "./CharacterList";
 import Editor from "./Editor";
 import CharacterForm from "./NewCharacterForm";
 
-export const Characters = () => {
+export const Characters = props => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
@@ -45,20 +45,21 @@ export const Characters = () => {
       method: "DELETE",
     })
       .then((resp) => resp.json())
-      .then((data) => data);
-  };
+      .then((data) => {
+        const removed = characters.filter(prevCharacters => prevCharacters.id !== data.id)
+        console.log(removed)
+        setCharacters(removed);
+        // console.log(characters);
+      });}
 
   return (
     <div className="p-5 text-center">
       <div className="charForm">
         <CharacterForm onAddCharacter={addCharacterHandler} />
       </div>
-      <div className="editForm">
-        <Editor className="editor-btn" onAddCharacter={addCharacterHandler} />
-      </div>
       <section className="container">
         <h2 className="text-center">Characters</h2>
-        <CharacterList characters={characters} removeItem={removeItem} />
+        <CharacterList characters={characters} setCharacters={setCharacters} removeItem={removeItem} />
       </section>
     </div>
   );

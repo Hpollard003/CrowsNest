@@ -6,11 +6,11 @@ import Profile from "./components/Profile";
 import Home from "./containers/Home";
 import Editor from "./components/Editor";
 
-const Auth = (props) => {
+const Auth = ({setCurrentUser, currentUser}) => {
   return (
     <div>
       <Router>
-        <Navbar />
+        <Navbar setCurrentUser={setCurrentUser} currentUser={currentUser}/>
         <Switch>
           <Route exact path="/" component={AuthHome} />
           <Route exact path="/profile" component={Profile} />

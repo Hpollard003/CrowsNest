@@ -1,8 +1,10 @@
 import React from "react";
 
-function Logout() {
+const Logout = ({setCurrentUser}) => {
   const handleLogout = () => {
-    fetch("/logout", { method: "DELETE" }).then(() => {});
+    fetch("/logout", { method: "DELETE" }).then(() => {
+      setCurrentUser(null)
+    });
   };
 
   return (
