@@ -7,6 +7,7 @@ function SignUp({ setCurrentUser }) {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [image, setImage] = useState("");
+  const [errors, setErrors] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,9 +29,14 @@ function SignUp({ setCurrentUser }) {
           history.push('/')
         });
       } else {
-        r.json().then((err) => err.error);
-      }
+        r.json().then((err) => setErrors(err.errors))}
     });
+  }
+
+  const errorRender = () => {
+    return errors.map(err => {
+      return <div className="alert alert-danger" role="alert">{err}</div>
+    })
   }
 
   return (
@@ -41,7 +47,7 @@ function SignUp({ setCurrentUser }) {
         onSubmit={handleSubmit}
         className="list-group list-group-flush"
         autoComplete="on"
-      >
+        >
         <input
           className="list-group-item"
           type="text"
@@ -50,7 +56,7 @@ function SignUp({ setCurrentUser }) {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
+          />
         <input
           className="list-group-item"
           type="password"
@@ -59,7 +65,7 @@ function SignUp({ setCurrentUser }) {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+          />
         <input
           className="list-group-item"
           type="password"
@@ -68,7 +74,7 @@ function SignUp({ setCurrentUser }) {
           placeholder="One more time"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
+          />
         <input
           className="list-group-item"
           type="img"
@@ -76,7 +82,8 @@ function SignUp({ setCurrentUser }) {
           placeholder="Set Img Url for profile picture"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-        />
+          />
+          {errors ? errorRender() : null}
           <button className="btn btn-outline-info w-100" type="submit">
             Sign up
           </button>

@@ -46,21 +46,16 @@ export const CharacterList = (props) => {
                   id={c.id}
                   className="btn btn-outline-primary border-top-0 border-end-0"
                   onClick={e => {
-                    console.log(charId)
                     setCharId(e.target.id)
                     toggleBtn()
                     }}
                 >
                   Edit
                 </button>
-                <a
-                  href="/creator"
-                  id={c.id}
-                  className="btn btn-outline-danger border-top-0 border-end-0"
-                  onClick={props.removeItem}
+                <button onClick={props.removeItem} id={c.id} className="btn btn-outline-danger"
                 >
                   Remove
-                </a>
+                </button>
               </div>
             </div>
           </div>

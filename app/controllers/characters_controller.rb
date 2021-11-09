@@ -9,7 +9,7 @@ class CharactersController < ApplicationController
     end
 
     def create
-        new_character = Character.create!(character_params)
+        new_character = @current_user.characters.create!(character_params)
         render json: new_character, status: :created
     end
 

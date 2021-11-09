@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { CharacterList } from "./CharacterList";
-import Editor from "./Editor";
 import CharacterForm from "./NewCharacterForm";
 
 export const Characters = props => {
@@ -10,19 +9,11 @@ export const Characters = props => {
     fetch("/characters")
       .then((resp) => resp.json())
       .then((data) => {
-        const character = [];
-        for (const key in data) {
-          character.push({
-            id: data[key].id,
-            name: data[key].name,
-            skill: data[key].skill,
-            description: data[key].description,
-            img_url: data[key].img_url,
-          });
-        }
-        setCharacters(character);
+        setCharacters(data);
       });
-  }, [setCharacters]);
+  }, []);
+
+
 
   const addCharacterHandler = (character) => {
     fetch("/characters", {
@@ -37,8 +28,10 @@ export const Characters = props => {
           { id: data.id, ...character },
         ]);
         console.log(character);
-      });
+      })
   };
+
+
 
   const removeItem = (event) => {
     fetch(`/characters/${event.target.id}`, {
@@ -46,11 +39,13 @@ export const Characters = props => {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        const removed = characters.filter(prevCharacters => prevCharacters.id !== data.id)
-        console.log(removed)
-        setCharacters(removed);
-        // console.log(characters);
+        filter(event.target.id)
       });}
+
+      const filter = (id) => {
+        const newchars = characters.filter(char => char.id !== parseInt(id))
+        setCharacters(newchars)
+      }
 
   return (
     <div className="p-5 text-center">

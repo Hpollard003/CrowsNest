@@ -32,10 +32,11 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
     })
       .then((response) => response.json())
       .then((data) => {
-        setCharacters((prevCharacters) => [
-          ...prevCharacters, character 
-        ]);
-        console.log(character);
+        const copy = [...characters]
+        const index = copy.findIndex(char => char.id == charId)
+        console.log(index)
+        copy[index] = data
+        setCharacters(copy)
       });
   }
 

@@ -6,20 +6,7 @@ const CharacterForm = (props) => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [toggled, setToggled] = useState(true);
-  const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    fetch("/me", {
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setUser(user);
-          console.log(user);
-        });
-      }
-    });
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,8 +14,7 @@ const CharacterForm = (props) => {
       name: name,
       skill: skill,
       description: description,
-      img_url: image,
-      user_id: user.id,
+      img_url: image
     });
   };
 
