@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 
 export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}) => {
@@ -6,23 +6,7 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
   const [skill, setSkill] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  // const [toggled, setToggled] = useState(true);
-  const [user, setUser] = useState(null);
 
-
-
-  useEffect(() => {
-    fetch("/me", {
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setUser(user);
-          console.log(user);
-        });
-      }
-    });
-  }, []);
 
   const editCharacterHandler = (character) => {
     fetch(`/characters/${charId}`, {
@@ -34,7 +18,7 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
       .then((data) => {
         const copy = [...characters]
         const index = copy.findIndex(char => char.id == charId)
-        console.log(index)
+        // console.log(index)
         copy[index] = data
         setCharacters(copy)
       });
@@ -46,8 +30,7 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
       name: name,
       skill: skill,
       description: description,
-      img_url: image,
-      user_id: user.id,
+      img_url: image
     })
   };
 

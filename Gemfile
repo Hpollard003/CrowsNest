@@ -13,7 +13,10 @@ gem 'puma', '~> 5.0'
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+
+
 # Use Active Model has_secure_password
+# Bcrypt is based on the Blowfish cipher algorithm crypt is for the name of the hashing function used by the UNIX password system.
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
