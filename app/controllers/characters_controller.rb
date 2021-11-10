@@ -35,6 +35,12 @@ class CharactersController < ApplicationController
         end
     end
 
+    def isEvilNow
+        character = find_character
+        character.update(name: "Evil " + params[:name])
+        render json: character, status: :ok
+    end
+
     private
 
     # This method finds characters by their respective Id

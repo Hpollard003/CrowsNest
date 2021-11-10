@@ -34,6 +34,28 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
     })
   };
 
+  const isEvil = () => {
+    fetch(`characters/${charId}/evil`, { 
+      method: "PATCH",
+      body: JSON.stringify(
+        {
+          name: name,
+          skill: skill,
+          description: description,
+          img_url: image
+        }
+      ),
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => response.json())
+    .then((data) => {
+      const copy = [...characters]
+      const index = copy.findIndex(char => char.id == charId)
+      // console.log(index)
+      copy[index] = data
+      setCharacters(copy)
+  })
+}
+
   const toggled = (e) => {
     toggled ? setToggled(false) : setToggled(true);
   };
@@ -103,7 +125,7 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
             }}
           />
         </div>
-        
+        <button className="btn btn-warning" onClick={isEvil}>Evil</button>
         <button className="btn btn-info" type="submit" >
           Submit
         </button>
