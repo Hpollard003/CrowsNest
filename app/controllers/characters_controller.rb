@@ -39,7 +39,7 @@ class CharactersController < ApplicationController
         character = find_character
         character.update(name: "Evil " + params[:name])
         render json: character, status: :ok
-    end
+    end  
 
     private
 
