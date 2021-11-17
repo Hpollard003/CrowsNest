@@ -39,10 +39,7 @@ export const Editor = ({setCharacters, characters,  charId , toggle, setToggled}
       method: "PATCH",
       body: JSON.stringify(
         {
-          name: name,
-          skill: skill,
-          description: description,
-          img_url: image
+          name: name
         }
       ),
       headers: { "Content-Type": "application/json" },

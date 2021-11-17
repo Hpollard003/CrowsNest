@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CharacterList } from "./CharacterList";
+import { CharacterCard } from "./CharacterCard";
 import CharacterForm from "./NewCharacterForm";
 
 export const Characters = props => {
@@ -31,6 +31,11 @@ export const Characters = props => {
       })
   };
 
+  const filterEvil = () => {
+    const allGoodHere = characters.filter(goodGuys => !goodGuys.name.includes("Evil"))
+    setCharacters(allGoodHere)
+  }
+
 
 
   const removeItem = (event) => {
@@ -54,7 +59,8 @@ export const Characters = props => {
       </div>
       <section className="container">
         <h2 className="text-center">Characters</h2>
-        <CharacterList characters={characters} setCharacters={setCharacters} removeItem={removeItem} />
+        <button onClick={filterEvil}>See no evil</button>
+        <CharacterCard characters={characters} setCharacters={setCharacters} removeItem={removeItem} />
       </section>
     </div>
   );

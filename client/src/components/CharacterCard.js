@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Editor from "./Editor";
 
-export const CharacterList = (props) => {
+export const CharacterCard = (props) => {
   const [charId, setCharId] = useState(null);
   const [toggled, setToggled] = useState(false);
 
@@ -85,4 +85,4 @@ export const CharacterList = (props) => {
     </section>
   );
 };
-export default CharacterList;
+export default CharacterCard;
