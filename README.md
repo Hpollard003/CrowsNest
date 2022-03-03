@@ -4,7 +4,7 @@
 
 A simple character creator.
 
-##Demo
+## Demo
 https://youtu.be/GUUOXs4InoY
 
 ## Requirements
