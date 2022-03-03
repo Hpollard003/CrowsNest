@@ -3,7 +3,7 @@
 ## Description
 
 A simple character creator.
-OPENSOURCE
+
 
 ## Requirements
 
